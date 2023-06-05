@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express"
+import { QueryFailedError } from "typeorm"
 import { ZodError } from "zod"
 
 class AppError extends Error {
@@ -15,6 +16,12 @@ class AppError extends Error {
 const handleErrors = (err: Error,  req: Request, res: Response, next: NextFunction) => {
     if(err instanceof AppError){
         return res.status(err.statusCode).json({
+            message: err.message
+        })
+    }
+
+    if(err instanceof QueryFailedError){
+        return res.status(400).json({
             message: err.message
         })
     }
