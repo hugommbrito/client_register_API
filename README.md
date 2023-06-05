@@ -3,6 +3,17 @@
 <h2>Criada para fins acadêmicos a fim de criar uma aplicação em formato full stack.<h2>
 <p>O Front End dessa aplicação pode ser encontrado no seguinte <a href='https://github.com/hugommbrito/client_register_front_end'>repositório</a></p>
 <hr/>
+<h1>Tecnologias Utilizadas</h2>
+<ul>
+    <li><strong>TypeScript</strong></li>
+    <li><strong>Express</strong></li>
+    <li><strong>TypeORM</strong></li>
+    <li>Zod</li>
+    <li>pg</li>
+    <li>Express-Async-Error</li>
+    <li>DotEnv</li>
+</ul>
+<hr/>
 <h2><strong>Instalação da API</strong></h2>
 <p>Para instalar a API faça um clone do repositório localmente em sua máquina e siga os passos a seguir</p>
 <ol>
@@ -16,7 +27,7 @@
     <li>Abra o terminal na pasta do repositório</li>
     <li>Instale as dapendências da aplicação: <code>npm install</code></li>
     <li>Rode as migrações: <code>npm run typeorm migration:run -- -d ./src/data-source</code></li>
-    <li>Inicie o servidor local: <code>npm run server</code></li>
+    <li>Inicie o servidor local: <code>npm run dev</code></li>
 </ol>
 <hr/>
 <h2><strong>Rotas da Aplicação</strong></h2>
@@ -50,11 +61,15 @@
 	]
 }
                 </pre>
+                <strong>Possíveis Erros:</strong>
+                <pre>
+400: 'Nenhuma chave válida foi informada'
+400: 'Zod Error {Informa as chaves preenchidas incorretamente}'
+409: 'Email já cadastrado na base de dados'</pre>
             <li><h2 style="background-color:MediumSeaGreen; color:black; font-weight:bold">GET</h2></li>
                 <p>Retorna todos os clientes o banco de dados com os seus respectivos contatos</p>
-                                <strong>Parâmetros esperados:</strong>
-                <pre>
-                </pre>
+                <strong>Parâmetros esperados:</strong>
+                <pre></pre>
                 <strong>Retorno esperado:</strong>
                 <pre>STATUS: 200(OK)
 [
@@ -92,6 +107,8 @@
 	}
 ]
                 </pre>
+                <strong>Possíveis Erros:</strong>
+                <pre></pre>
             <li><h2 style="background-color:MediumSeaGreen; color:black; font-weight:bold">PATCH</h2></li>
                 <p>Altera o nome de um determinado cliente</p>
                 <strong>Parâmetros esperados:</strong>
@@ -120,6 +137,12 @@ BODY:
 	]
 }
                 </pre>
+                <strong>Possíveis Erros:</strong>
+                <pre>
+404: 'Contato não encontrado'
+400: 'Nenhuma chave válida foi informada'
+400: 'QueryFaildError {Informa caso o uuid não seja informado corretamente}'
+400: 'Zod Error {Informa as chaves preenchidas incorretamente}'</pre>
             <li><h2 style="background-color:MediumSeaGreen; color:black; font-weight:bold">DELETE</h2></li>
                 <p>Deleta um determinado cliente juntamente com todos os contatos associados a ele</p>
                 <strong>Parâmetros esperados:</strong>
@@ -128,7 +151,11 @@ PATH:
 /clientID
                 </pre>
                 <strong>Retorno esperado:</strong>
-                <pre>STATUS: 204(No Content)</pre>
+                <pre>STATUS: 204(No Content)</pre>                
+                <strong>Possíveis Erros:</strong>
+                <pre>
+404: 'Contato não encontrado'
+400: 'QueryFaildError {Informa caso o uuid não seja informado corretamente}'</pre>                
         </ul>
     </li>
     <li><h2 style="background-color:green;"><strong>Rotas de Contatos: '/contacts'</strong></h2>
@@ -162,11 +189,15 @@ PATH:
 	}
 }
                 </pre>
+                <strong>Possíveis Erros:</strong>
+                <pre>
+400: 'Nenhuma chave válida foi informada'
+400: 'Zod Error {Informa as chaves preenchidas incorretamente}'
+409: 'Email já cadastrado na base de dados'</pre>
             <li><h2 style="background-color:MediumSeaGreen; color:black; font-weight:bold">GET</h2></li>
                 <p>Retorna todos os conatos o banco de dados.</p>
                 <strong>Parâmetros esperados:</strong>
-                <pre>
-                </pre>
+                <pre></pre>
                 <strong>Retorno esperado:</strong>
                 <pre>STATUS: 200(OK)
 [
@@ -190,6 +221,8 @@ PATH:
 	}
 ]
                 </pre>
+                <strong>Possíveis Erros:</strong>
+                <pre></pre>
             <li><h2 style="background-color:MediumSeaGreen; color:black; font-weight:bold">PATCH</h2></li>
                 <p>Altera um ou todos os dados de um determinado contato</p>
                 <strong>Parâmetros esperados:</strong>
@@ -227,6 +260,12 @@ ou
 	]
 }
                 </pre>
+                <strong>Possíveis Erros:</strong>
+                <pre>
+404: 'Contato não encontrado'
+400: 'Nenhuma chave válida foi informada'
+400: 'QueryFaildError {Informa caso o uuid não seja informado corretamente}'
+400: 'Zod Error {Informa as chaves preenchidas incorretamente}'</pre>
             <li><h2 style="background-color:MediumSeaGreen; color:black; font-weight:bold">DELETE</h2></li>
                 <p>Deleta um determinado contato da base de dados.</p>
                 <strong>Parâmetros esperados:</strong>
@@ -236,6 +275,10 @@ PATH:
                 </pre>
                 <strong>Retorno esperado:</strong>
                 <pre>STATUS: 204(No Content)</pre>
+                <strong>Possíveis Erros:</strong>
+                <pre>
+404: 'Contato não encontrado'
+400: 'QueryFaildError {Informa caso o uuid não seja informado corretamente}'</pre>
         </ul>
     </li>
 </ul>
