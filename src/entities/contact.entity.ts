@@ -12,7 +12,7 @@ export class Contact{
     @Column({ type: 'varchar', length: 11})
     phone: string
 
-    @ManyToOne(() => Client, (client) => client.contacts)
+    @ManyToOne(() => Client, (client) => client.contacts, {onDelete: "CASCADE"})
     client: Client
 
     @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})

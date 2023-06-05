@@ -11,10 +11,12 @@ export const isEmailUniqueMdwr = async (req: Request, res: Response, next: NextF
             email: req.body.email
         }
     })
+    console.log(isEmail)
 
     if(isEmail){
         throw new AppError('Email já cadastrado na base de dados', 409)
+    } else {
+        return next()
     }
     
-    return next()
 }

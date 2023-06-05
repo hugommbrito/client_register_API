@@ -4,9 +4,11 @@ import 'reflect-metadata'
 import { handleErrors } from "./error";
 import { clientRouter } from "./routers/client.routes";
 import { contactRouter } from "./routers/contact.routes";
+import cors from 'cors'
 
 const app: Application = express()
 app.use(express.json())
+app.use(cors())
 
 app.use('/client', clientRouter)
 app.use('/contact', contactRouter)

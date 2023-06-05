@@ -10,7 +10,7 @@ export class Client{
     @Column({ type: 'varchar'})
     name: string
 
-    @OneToMany(() => Contact, (contact) => contact.client)
+    @OneToMany(() => Contact, (contact) => contact.client, {onDelete: "CASCADE"})
     contacts: Contact[]
 
     @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})

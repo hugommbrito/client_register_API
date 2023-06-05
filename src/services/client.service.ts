@@ -41,7 +41,8 @@ const read = async (): Promise<Client[]> => {
     return clientList
 }
 
-const update = async (clientID: string, payload: any): Promise<iClientReturned> => {
+const update = async (clientID: any, payload: any): Promise<iClientReturned> => {
+    console.log("CLIENT ID ------------>>> "+clientID)
     const clientRepository: iClientRepo = AppDataSource.getRepository(Client)
     const clientToUpdate = await clientRepository.findOne({
         where: {
